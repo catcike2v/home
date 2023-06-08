@@ -12,23 +12,7 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
   const [showPic, setShowPic] = React.useState(Boolean(link));
   // https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
   React.useEffect(() => {
-    const handleRequest = async () => {
-      const instaLink = "https://www.instagram.com/";
-      const instaQuery = "/?__a=1";
-      try {
-        const response = await axios.get(instaLink + link + instaQuery);
-        setProfilePicUrl(response.data.graphql.user.profile_pic_url_hd);
-      } catch (error) {
-        setShowPic(false);
-        console.error(error.message);
-      }
-    };
-
-    if (link && !pictureLinkRegex.test(link)) {
-      handleRequest();
-    } else {
       setProfilePicUrl(link);
-    }
   }, [link]);
 
 
@@ -59,8 +43,9 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
                 rel="noreferrer noopener"
                 role="button"
                 aria-label="Resume/CV"
+                download
               >
-                Resume
+                Download Resume
               </a>
             </p>
           )}

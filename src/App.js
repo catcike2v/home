@@ -39,7 +39,7 @@ const Home = React.forwardRef((props, ref) => {
           message={about.message}
           link={about.imageLink}
           imgSize={about.imageSize}
-          resume={about.resume}
+          resume={about.downloadresume}
         />
       )}
       {
@@ -79,7 +79,7 @@ const App = () => {
   const titleRef = React.useRef();
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
+    <BrowserRouter basename={"/home"}>
       {navBar.show && <Navbar ref={titleRef} />}
       <Routes>
         <Route path="/" exact element={<Home ref={titleRef} />} />
@@ -91,7 +91,7 @@ const App = () => {
           <GetInTouch
             heading={getInTouch.heading}
             message={getInTouch.message}
-            email={getInTouch.email}
+            linkedin={getInTouch.linkedin}
           />
         )}
       </Footer>
